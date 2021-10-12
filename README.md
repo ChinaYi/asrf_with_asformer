@@ -1,6 +1,6 @@
 # Alleviating Over-segmentation Errors by Detecting Action Boundaries
-
-This repo is the official implementation of [Y. Ishikawa et al. "Alleviating Over-segmentation Errors by Detecting Action Boundaries" in WACV 2021](https://arxiv.org/abs/2007.06866).
+Forked from [ASRF](https://github.com/yiskw713/asrf) offical code.
+This repo is the a implementation of replacing original [MSTCN](https://github.com/yabufarha/ms-tcn) backbone with [ASFormer](https://github.com/ChinaYi/ASFormer).
 
 ## Dataset
 
@@ -72,13 +72,13 @@ Please run the following command. `[DATASET_DIR]` is the path to your dataset di
     python utils/generate_boundary_array.py --dataset_dir [DATASET_DIR]
     ```
 
-1. In this implementation, csv files are used for keeping information  of training or test data. Please run the below command to generate csv files.
+1. In this implementation, csv files are used for keeping information  of training or test data. You can run the below command to generate csv files, but we suggest to use the csv files provided in the repo. 
 
     ```bash
     python utils/make_csv_files.py --dataset_dir [DATASET_DIR]
     ```
 
-1. You can automatically generate experiment configuration files by running the following command. This command generates directories and configuration files in `root_dir`.
+1. You can automatically generate experiment configuration files by running the following command. This command generates directories and configuration files in `root_dir`. However, we suggest to use the config files provided in the repo.
 
     ```bash
     python utils/make_config.py --root_dir ./result/50salads --dataset 50salads --split 1 2 3 4 5
@@ -94,7 +94,7 @@ Please run the following command. `[DATASET_DIR]` is the path to your dataset di
 
     Please see `libs/config.py` about configurations.
 
-1. You can train and evaluate models specifying a configuration file generated in the above process like:
+1. You can train and evaluate models specifying a configuration file generated in the above process like, we train 80 epochs for 50salads dataset in the config.yaml.
 
     ```bash
     python train.py ./result/50salads/dataset-50salads_split-1/config.yaml
@@ -119,15 +119,14 @@ This repository is released under the MIT License.
 
 ## Citation
 
-```citation
-Yuchi Ishikawa, Seito Kasai, Yoshimitsu Aoki, Hirokatsu Kataoka,
-"Alleviating Over-segmentation Errors by Detecting Action Boundaries"
-in WACV 2021
-```
-
-You can see the paper in [arXiv](https://arxiv.org/abs/2007.06866)
+@inproceedings{chinayi_ASformer,  
+	author={Fangqiu Yi and Hongyu Wen and Tingting Jiang}, 
+	booktitle={The British Machine Vision Conference (BMVC)},   
+	title={ASFormer: Transformer for Action Segmentation},
+	year={2021},  
+}
 
 ## Reference
-
+* Yuchi Ishikawa, Seito Kasai, Yoshimitsu Aoki, Hirokatsu Kataoka, "Alleviating Over-segmentation Errors by Detecting Action Boundaries" in WACV 2021.
 * Colin Lea et al., "Temporal Convolutional Networks for Action Segmentation and Detection", in CVPR2017 ([paper](http://zpascal.net/cvpr2017/Lea_Temporal_Convolutional_Networks_CVPR_2017_paper.pdf))
 * Yazan Abu Farha et al., "MS-TCN: Multi-Stage Temporal Convolutional Network for Action Segmentation", in CVPR2019 ([paper](http://openaccess.thecvf.com/content_CVPR_2019/papers/Abu_Farha_MS-TCN_Multi-Stage_Temporal_Convolutional_Network_for_Action_Segmentation_CVPR_2019_paper.pdf), [code](https://github.com/yabufarha/ms-tcn))
